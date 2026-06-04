@@ -131,7 +131,7 @@
                 <a href="#features">Features</a>
                 <a href="#contact">Contact</a>
             </div>
-            <button class="theme-btn" onclick="toggleTheme()">Toggle Mode</button>
+            <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Dark Mode</button>
         </nav>
 
         <header id="home" style="padding-top: 40px;">
@@ -171,19 +171,15 @@
     <script>
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
+            const button = document.getElementById('themeBtn');
+
             if (currentTheme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
+                button.textContent = 'Dark Mode';
             } else {
                 document.documentElement.setAttribute('data-theme', 'dark');
-            }    
-        
-        }
-        
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            alert('Thank you, ${name}! Your message has been stimulated as sent.');
-            document.getElementById('contactForm').reset();
+                button.textContent = 'Light Mode';
+            }
         }
     </script>
 </body>
