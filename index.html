@@ -6,147 +6,119 @@
     <title>Krysync 51 Upgraded</title>
     <style>
         :root {
-            --bg-color: #f9f9f9;
-            --text-color: #333;
+            --bg-color: #f4f7f6;    
+            --text-color: #2d3748;
             --card-bg: #ffffff;
-            --accent-color: #0076ff;
-            --border-color: #ddd;
+            --accent-color: #4f46e5;
+            --border-color: #e2e8f0;
+            --input-bg: #ffffff;
         }
 
         [data-theme="dark"] {
-            --bg-color: #121212;
-            --text-color: #f5f5f5;
-            --card-bg: #1e1e1e;
-            --accent-color: #3792ff;
-            --border-color: #333;
+            --bg-color: #0f172a;
+            --text-color: #f1f5f9;
+            --card-bg: #1e293b;
+            --accent-color: #818cf8;
+            --border-color: #3344155;
+            --input-bg: #1e293b;
         }
 
+        * {
+            box-sizing: border-box;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+        
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans serif, calibri;
-            line-height: 1.6;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.7;
             margin: 0;
             padding: 0;
             background-color: var(--bg-color);
             color: var(--text-color);
-            transition: background 0.3s, color 0.3s;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
         
-        nav {
+        nav.container {
+            max-width: 800px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
         }
+        
         .nav-links a {
-            margin-right: 15px;
+            margin-right: 20px;
             color: var(--text-color);
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.95rem;
         }
-
+        
         .nav-links a:hover {
             color: var(--accent-color);
-        }
+        }   
 
         button.theme-btn {
             background:var(--accent-color);
             color: white;
             border: none;
-            padding: 8px 12px;
+            padding: 12px;
             cursor: pointer;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.0.5);
-        }
-
-        .placeholder-image {
-            width: 100%;
-            height: 200px;
-            background: #eaeaea;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            border-radius: 4px;
-            margin-bottom: 15px;
-        }
-        
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        input, textarea {
-            padding: 10px;
-            border: 1px solid var(--border-color);
-            border-radius: 4px;
-            background: var(--card-bg);
-            color: var(--text-color);
-        }
-
-        button.submit-btn {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 16px
+            border-radius: 6px;
+            font-weight: 1rem;
+            font-weight: 600;
+            margin-top: 10px;
         }
 
         button.submit-btn:hover {
-            background: #218838;
+            background: var(--accent-hover);
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 60px;
             font-size: 0.9em;
-            color: #777;
+            color: #718096;
         }
-
     </style>
 </head>
 <body>
-    <div class="container">
-        <nav>
+    
+    <nav>
+         <div class="container">
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#features">Features</a>
                 <a href="#contact">Contact</a>
             </div>
             <button class="theme-btn" id="themeBtn" onclick="toggleTheme()">Dark Mode</button>
-        </nav>
+        </div>
+    </nav>
 
+    <div>
         <header id="home" style="padding-top: 40px;">
             <h1>My upgraded Website</h1>
-            <p>We've added styling variables, interactive features, and a dynamic layout structure.</p>
-
+            <p>We've polished the typography, updated the colors, and added smooth UI feedback mechanics.</p>
         </header>
-
+    
         <main>
             <section id="features" class="card">
                 <div class="placeholder-image">
-                    <span>[ Visual Content Placeholder ]</span>
+                    <span>Beautiful Visual Content</span>
                 </div>
                 <h2>Interactive Components</h2>
-                <p>This layout uses CSS variables to seamlessly switch between light and dark modes. Click the button in the top right to test it out!</p>
+                <p>This layout uses CSS variables to seamlessly switch between light and dark modes. The cards now feature subtle elevation shadows and float upwards slightly when you hover over them.</p>
             </section>
 
             <section id="contact" class="card">
@@ -169,7 +141,7 @@
             <p>&copy; 2026 Krysync 51. Built from scratch.</p>
         </footer>
     </div>
-
+       
     <script>
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
