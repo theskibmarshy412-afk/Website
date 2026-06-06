@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krysync 51 Upgraded</title>
+    <title>My Modern Website</title>
     <style>
+        /* CSS Variables for Easy Theme Switching */
         :root {
-            --bg-color: #f4f7f6;    
+            --bg-color: #f4f7f6;
             --text-color: #2d3748;
             --card-bg: #ffffff;
-            --accent-color: #4f46e5;
+            --accent-color: #4f46e5; 
+            --accent-hover: #4338ca;
             --border-color: #e2e8f0;
             --input-bg: #ffffff;
         }
 
         [data-theme="dark"] {
-            --bg-color: #0f172a;
+            --bg-color: #0f172a; 
             --text-color: #f1f5f9;
             --card-bg: #1e293b;
-            --accent-color: #818cf8;
-            --border-color: #3344155;
+            --accent-color: #6366f1;
+            --accent-hover: #818cf8;
+            --border-color: #334155;
             --input-bg: #1e293b;
         }
 
@@ -27,7 +30,7 @@
             box-sizing: border-box;
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
-        
+
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.7;
@@ -37,6 +40,7 @@
             color: var(--text-color);
         }
 
+        /* Sticky Navigation Bar */
         nav {
             position: fixed;
             top: 0;
@@ -47,16 +51,16 @@
             z-index: 1000;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        
-        nav.container {
-            max-width: 800px;
+
+        .nav-container {
+            max-width: 1100px; /* Widened to fit the new side-by-side layout */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 20px;
         }
-        
+
         .nav-links a {
             margin-right: 20px;
             color: var(--text-color);
@@ -64,19 +68,139 @@
             font-weight: 600;
             font-size: 0.95rem;
         }
-        
+
         .nav-links a:hover {
             color: var(--accent-color);
-        }   
+        }
 
         button.theme-btn {
-            background:var(--accent-color);
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        button.theme-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        /* Container Layout */
+        .container {
+            max-width: 1100px; /* Widened from 800px for a more spacious layout */
+            margin: 0 auto;
+            padding: 120px 20px 40px 20px; 
+        }
+
+        /* Hero Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            letter-spacing: -0.025em;
+            font-weight: 800;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* NEW FEATURE: Modern Side-by-Side Grid Layout */
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr; /* Default to 1 column for mobile */
+            gap: 30px; /* Space between the cards */
+            align-items: start;
+        }
+
+        /* Desktop Mode: Splits into 2 equal columns when the screen is wide enough */
+        @media (min-width: 768px) {
+            .grid-layout {
+                grid-template-columns: 1fr 1fr; 
+            }
+        }
+
+        /* Interactive Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transform: translateY(0);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin: 0; /* Removed fixed top/bottom margins */
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .placeholder-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        /* Sleek, Modern Form Controls */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        label {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        input, textarea {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            width: 100%;
+        }
+
+        input:focus, textarea:focus {
+            outline: 2px solid var(--accent-color);
+            outline-offset: -1px;
+        }
+
+        button.submit-btn {
+            background: var(--accent-color);
             color: white;
             border: none;
             padding: 12px;
             cursor: pointer;
-            border-radius: 6px;
-            font-weight: 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
             font-weight: 600;
             margin-top: 10px;
         }
@@ -87,16 +211,16 @@
 
         footer {
             text-align: center;
-            margin-top: 60px;
+            margin-top: 80px;
             font-size: 0.9em;
             color: #718096;
         }
     </style>
 </head>
 <body>
-    
+
     <nav>
-         <div class="container">
+        <div class="nav-container">
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#features">Features</a>
@@ -106,47 +230,58 @@
         </div>
     </nav>
 
-    <div>
-        <header id="home" style="padding-top: 40px;">
-            <h1>My upgraded Website</h1>
-            <p>We've polished the typography, updated the colors, and added smooth UI feedback mechanics.</p>
+    <div class="container" id="home">
+        <header>
+            <h1>My Modern Website</h1>
+            <p>We've broken away from the basic vertical list layout. Your content is now beautifully organized across a multi-column dynamic grid system.</p>
         </header>
-    
-        <main>
+
+        <main class="grid-layout">
+            
             <section id="features" class="card">
                 <div class="placeholder-image">
                     <span>Beautiful Visual Content</span>
                 </div>
                 <h2>Interactive Components</h2>
-                <p>This layout uses CS variables to seamlessly switch between light and dark modes. The cards now feature subtle elevation shadows and float upwards slightly when you hover over them.</p>
+                <p>This layout uses CSS Grid to display information side-by-side. The cards feature subtle elevation shadows and float upwards when you hover over them.</p>
             </section>
 
             <section id="contact" class="card">
-                <h2>Get in touch</h2>
+                <h2>Get in Touch</h2>
                 <form action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required placeholder="Your Name">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
 
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="_replyto" required placeholder="your.email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="4" required placeholder="Leave a comment..."></textarea>
+                    </div>
 
                     <input type="hidden" name="_subject" value="New Website Submission!">
-
-                    <button type="submit" class="'submit-btn">Send Message</button>
+                    <button type="submit" class="submit-btn">Send Message</button>
                 </form>
             </section>
+
         </main>
 
         <footer>
-            <p>&copy; 2026 Krysync 51. Built from scratch.</p>
+            <p>&copy; 2026 My Minimal Website. Built from scratch.</p>
         </footer>
     </div>
 
     <script>
+        // Theme Switching Function with Text Update
         function toggleTheme() {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const button = document.getElementById('themeBtn');
-
+            
             if (currentTheme === 'dark') {
                 document.documentElement.setAttribute('data-theme', 'light');
                 button.textContent = 'Dark Mode';
@@ -155,6 +290,7 @@
                 button.textContent = 'Light Mode';
             }
         }
-    </script>   
+    </script>
+
 </body>
 </html>
